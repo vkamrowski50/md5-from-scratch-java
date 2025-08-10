@@ -1,32 +1,99 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/am3xLbu5)
-# The MD5 Algorithm
+# MD5 from Scratch in Java
 
-### JV Hashers
+This project is a complete implementation of the [MD5](https://www.rfc-editor.org/rfc/rfc1321) cryptographic hashing algorithm written entirely from scratch in Java.  
+It recreates every step of the algorithm — including bitwise operations, message padding, endian conversions, and 512-bit block processing — without using built-in hashing libraries.
 
-Victor Kamrowski  
-Jason Chao
+The implementation is verified against standard RFC test vectors and benchmarked against Java’s built-in `MessageDigest` for performance comparison.
 
-### Project Description:
+---
 
-This project is a program replicating the MD5 hashing algorithm (up to inputs with 55 characters). There will be files containing the significant individual operations within the algorithm, and a Main file that compiles it all together to do the hash in one go.
+## Features
+- Implements MD5 core algorithm per RFC 1321
+- Handles bitwise operations, padding, and endian conversions manually
+- Modular design: each MD5 operation is implemented in its own class (`Op_One.java`, `Op_Two.java`, etc.)
+- Debug mode for step-by-step output during hashing
+- Benchmarking scripts to compare performance with `java.security.MessageDigest`
+- Test scripts for correctness verification
 
-### Instructions:
+---
 
-**Installation**  
-Clone the repository: `git clone git@github.com:Stuycs-K/finalproject-09-kamrowski-victor-chao-jason.git`.
+## Limitations
+- Supports input strings up to **55 characters** (single-block MD5)  
+- Multi-block support can be added by extending the padding and processing logic for multiple 512-bit blocks
 
-**Running the Program**  
-Run the main program to hash text: `make compile && make run ARGS="<input_string>"`.
-To run in debug mode: `make run-debug ARGS="<input_string>"`.
+---
 
-### Presentation:
-- [Google Drive Video](https://drive.google.com/file/d/1qyk5aMh3lLwHmW4E9JOpVp3-dfRMZYbb/view?usp=drive_link)
-- [PRESENTATION.MD](https://github.com/Stuycs-K/finalproject-09-kamrowski-victor-chao-jason/blob/main/PRESENTATION.md)
+## File Overview
+- `Main.java` – Main entry point for hashing  
+- `Main_Debug.java` – Debug mode main entry point  
+- `MD5_actual.java` – Core MD5 logic  
+- `Op_One.java` … `Op_Four.java` – MD5 round functions  
+- `Op_Final.java` – Final step of MD5 computation  
+- `Padding.java` – Message padding implementation  
+- `Utils.java` – Utility methods (bitwise ops, endian conversions, etc.)  
+- `MD5Test.java` – Additional custom testing harness 
+- `makefile` – Compile and run targets  
+- `test_actual.sh` – Compare output against system `md5` tool  
+- `test_program.sh` – Compare output against Java `MessageDigest`  
+- `runtimes.txt` – Recorded benchmark results  
 
-### Resources/References:
+---
 
- - [in-depth explanation](https://www.comparitech.com/blog/information-security/md5-algorithm-with-examples/)
- - [geeksforgeeks explanation](https://www.geeksforgeeks.org/what-is-the-md5-algorithm/)
- - [wikipedia explanation](https://en.wikipedia.org/wiki/MD5#Algorithm)
- - [MD5 Documentation](https://www.ietf.org/rfc/rfc1321.txt)
- - [MD5 Debugger](https://twy.name/Tools/Hash/md5.html)
+## Quick Start
+
+### 1. Compile
+```bash
+make compile
+```
+
+### 2. Run
+```bash
+make run ARGS="your message here"
+```
+
+### 3. Debug Mode
+```bash
+make run-debug ARGS="your message here"
+```
+
+---
+
+## Testing
+
+Compare this implementation to system MD5:
+```bash
+sh test_actual.sh
+```
+
+Compare to Java’s `MessageDigest`:
+```bash
+sh test_program.sh
+```
+
+---
+
+## Benchmarks
+`runtimes.txt` contains performance results from this implementation and Java’s built-in `MessageDigest` across multiple input sizes.  
+(Example: hash times for short strings, 1 MB, 50 MB.)
+
+---
+
+## Security Note
+MD5 is considered cryptographically broken and unsuitable for modern security purposes.  
+This implementation is for **educational use only**.
+
+---
+
+## Author
+Developed by **Victor Kamrowski** with contributions from **Jason Chao**.
+
+---
+
+## Repository Note
+This repository was imported in a single commit from a private development repo where it was originally created and maintained.  
+The commit history was reset to remove unrelated school references.
+
+---
+
+## License
+MIT License – see `LICENSE` for details.
