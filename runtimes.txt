@@ -1,0 +1,10 @@
+** This is run off of 100 lines of rockyou.
+
+    Actual  |  Our Program
+1.  0.07s   |  5.73s
+2.  0.06s   |  5.78s
+3.  0.05s   |  5.69s
+4.  0.09s   |  5.80s
+5.  0.09s   |  5.64s
+
+Summary: Our program is SLOOOOW.
