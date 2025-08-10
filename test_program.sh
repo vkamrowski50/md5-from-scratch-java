@@ -1,6 +1,14 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
+set -euo pipefail
 
-while IFS= read -r line; do
-  # Your code to process each line
-  make run ARGS="$line";
-done < ./shortrockyou.txt
+input_file="${1:-tests/input.txt}"
+
+if [[ ! -f "$input_file" ]]; then
+  echo "Input file '$input_file' not found." >&2
+  exit 1
+fi
+
+while IFS= read -r line || [[ -n "$line" ]]; do
+  echo "$line"
+  make run ARGS="$line"
+done < "$input_file"

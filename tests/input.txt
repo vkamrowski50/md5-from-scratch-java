@@ -1,0 +1,8 @@
+a
+abc
+message digest
+abcdefghijklmnopqrstuvwxyz
+1234567890
+The quick brown fox jumps over the lazy dog
+ABCDEFGHIJKLMNOPQRSTUVWXYZ
+hello world
