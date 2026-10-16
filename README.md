@@ -1,7 +1,7 @@
 # MD5 from Scratch in Java
 
 This project is a complete implementation of the [MD5](https://www.rfc-editor.org/rfc/rfc1321) cryptographic hashing algorithm written entirely from scratch in Java.  
-It recreates every step of the algorithm — including bitwise operations, message padding, endian conversions, and 512-bit block processing — without using built-in hashing libraries.
+It recreates every step of the algorithm (including bitwise operations, message padding, endian conversions, and 512-bit block processing) without using built-in hashing libraries.
 
 The implementation is verified against standard RFC test vectors and benchmarked against Java’s built-in `MessageDigest` for performance comparison.
 
